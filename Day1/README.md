@@ -231,13 +231,13 @@ The generated mapped netlist is:
 
 `RTL/good_mux_sky130.v`
 
-[View the mapped netlist](RTL/Screenshot%202026-11-15%203752.v)
+
 
 ### Terminal Output Screenshot
 
 Save your Yosys mapping terminal screenshot as `mux_mapping_terminal.png`.
 
-![Yosys SKY130 mapping output](Screenshots/mux_mapping_terminal.png)
+
 
 ---
 
@@ -268,7 +268,7 @@ dot -Tsvg Screenshots/good_mux_sky130.dot -o Screenshots/good_mux_sky130.svg
 
 ### Schematic
 
-![SKY130 mapped MUX schematic](Screenshots/good_mux_sky130.svg)
+[View the mapped netlist](RTL/Screenshot%202026-11-15%203752.png) 
 
 ---
 
