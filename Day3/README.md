@@ -1,3 +1,4 @@
+
 # Day 03 – Introduction to Logic Optimizations
 
 ## Objective
@@ -47,65 +48,59 @@ Day-03-Introduction-to-Logic-Optimizations/
 
 The conditional expression:
 
-```verilog
-assign y = a ? b : 0;
-```
+`assign y = a ? b : 0;`
 
-is equivalent to:
+simplifies to:
 
-```verilog
-assign y = a & b;
-```
+`assign y = a & b;`
 
-Yosys identifies the redundant conditional structure and simplifies it into an AND operation.
+[![opt_check RTL](./Screenshots/Screenshot%202026-11-16%20161749.png)](./Screenshots/Screenshot%202026-11-16%20161749.png)
+
+[![opt_check synthesis](./Screenshots/Screenshot%202026-11-16%20161856.png)](./Screenshots/Screenshot%202026-11-16%20161856.png)
+
+[![opt_check netlist](./Screenshots/Screenshot%202026-11-16%20162003.png)](./Screenshots/Screenshot%202026-11-16%20162003.png)
 
 ## 1.2 opt_check2
 
 **RTL file:** `RTL/opt_check2.v`
 
-```verilog
-assign y = a ? 1 : b;
-```
+`assign y = a ? 1 : b;`
 
 The expression simplifies to:
 
-```verilog
-assign y = a | b;
-```
+`assign y = a | b;`
 
 The output is high when either input is high.
+
+[![opt_check2 result](./Screenshots/Screenshot%202026-11-16%20162558.png)](./Screenshots/Screenshot%202026-11-16%20162558.png)
 
 ## 1.3 opt_check3
 
 **RTL file:** `RTL/opt_check3.v`
 
-```verilog
-assign y = a ? (c ? b : 0) : 0;
-```
+`assign y = a ? (c ? b : 0) : 0;`
 
 The simplified Boolean expression is:
 
-```verilog
-assign y = a & b & c;
-```
+`assign y = a & b & c;`
 
 The output is high only when all three inputs are high.
+
+[![opt_check3 result](./Screenshots/Screenshot%202026-11-16%20162843.png)](./Screenshots/Screenshot%202026-11-16%20162843.png)
 
 ## 1.4 opt_check4
 
 **RTL file:** `RTL/opt_check4.v`
 
-```verilog
-assign y = a ? (b ? (a & c) : c) : (!c);
-```
+`assign y = a ? (b ? (a & c) : c) : (!c);`
 
 The expression simplifies to:
 
-```verilog
-assign y = ~(a ^ c);
-```
+`assign y = ~(a ^ c);`
 
 This is an XNOR operation. Input `b` becomes irrelevant after optimization.
+
+[![opt_check4 result](./Screenshots/Screenshot%202026-11-16%20162929.png)](./Screenshots/Screenshot%202026-11-16%20162929.png)
 
 ---
 
@@ -121,9 +116,7 @@ Yosys identifies unused submodule outputs and removes logic that does not contri
 
 For the first design, the resulting Boolean expression is:
 
-```verilog
-assign y = c | (a & b);
-```
+`assign y = c | (a & b);`
 
 The unused XOR logic is eliminated.
 
@@ -135,6 +128,10 @@ The second design demonstrates complete logic removal when the output is constan
 - Redundant intermediate signals are eliminated.
 - Constant propagation simplifies expressions.
 - Only logic contributing to the output is retained.
+
+[![multiple module optimization](./Screenshots/Screenshot%202026-11-16%20163227.png)](./Screenshots/Screenshot%202026-11-16%20163227.png)
+
+[![multiple module optimization result](./Screenshots/Screenshot%202026-11-16%20163311.png)](./Screenshots/Screenshot%202026-11-16%20163311.png)
 
 ---
 
@@ -158,6 +155,8 @@ The output is reset to 0 and assigned 1 during normal operation.
 
 The output depends on the reset and clock behavior.
 
+[![dff_const1 result](./Screenshots/Screenshot%202026-11-16%20163342.png)](./Screenshots/Screenshot%202026-11-16%20163342.png)
+
 ## 3.2 dff_const2
 
 **RTL:** `RTL/dff_const2.v`
@@ -174,12 +173,13 @@ Yosys identifies the output as constant and removes the sequential logic.
 
 This design uses an internal register `q1`, which feeds the output register `q`.
 
-```verilog
-q1 <= 1'b1;
-q  <= q1;
-```
+`q1 <= 1'b1;`
+
+`q <= q1;`
 
 Because nonblocking assignments use the previous value of `q1` for the assignment to `q`, sequential behavior must be preserved.
+
+[![dff_const3 result](./Screenshots/Screenshot%202026-11-16%20163916.png)](./Screenshots/Screenshot%202026-11-16%20163916.png)
 
 ## 3.4 dff_const4
 
@@ -191,20 +191,23 @@ Yosys identifies the output as a constant and removes the flip-flop logic.
 
 **Observed result:** Zero cells remain.
 
+[![dff_const4 result](./Screenshots/Screenshot%202026-11-16%20163935.png)](./Screenshots/Screenshot%202026-11-16%20163935.png)
+
 ## 3.5 dff_const5
 
 **RTL:** `RTL/dff_const5.v`
 
 The design uses two registers:
 
-```verilog
-q1 <= 1'b1;
-q  <= q1;
-```
+`q1 <= 1'b1;`
+
+`q <= q1;`
 
 The output depends on the previous state of `q1`.
 
 **Observed result:** Two flip-flops are retained in the synthesized design.
+
+[![dff_const5 result](./Screenshots/Screenshot%202026-11-16%20164102.png)](./Screenshots/Screenshot%202026-11-16%20164102.png)
 
 ---
 
@@ -216,9 +219,7 @@ The output depends on the previous state of `q1`.
 
 The design describes a 3-bit counter, but only the least significant bit is connected to the output.
 
-```verilog
-assign q = count[0];
-```
+`assign q = count[0];`
 
 The upper two bits do not affect the observable output.
 
@@ -232,15 +233,15 @@ The upper two bits do not affect the observable output.
 
 The 3-bit counter is optimized into one flip-flop and one inverter.
 
+[![counter_opt result](./Screenshots/Screenshot%202026-11-16%20194327.png)](./Screenshots/Screenshot%202026-11-16%20194327.png)
+
 ## 4.2 counter_opt2
 
 **RTL:** `RTL/counter_opt2.v`
 
 The output depends on a comparison involving all three counter bits:
 
-```verilog
-assign q = (count[2:0] == 3'b100);
-```
+`assign q = (count[2:0] == 3'b100);`
 
 All three counter bits are required for this comparison.
 
@@ -254,6 +255,8 @@ All three counter bits are required for this comparison.
 | **Total** | **3** |
 
 Unlike `counter_opt`, this design retains the complete counter state.
+
+[![counter_opt2 result](./Screenshots/Screenshot%202026-11-16%20194704.png)](./Screenshots/Screenshot%202026-11-16%20194704.png)
 
 ---
 
@@ -394,5 +397,3 @@ yosys -p "read_verilog RTL/counter_opt2.v; hierarchy -top counter_opt2; synth -t
 Day 03 demonstrates that synthesis is not simply a direct translation of RTL into hardware. Yosys analyzes the design, performs Boolean simplification, propagates constants, eliminates unused logic, and optimizes sequential elements while preserving the intended behavior.
 
 The experiments highlight the importance of observable outputs and sequential dependencies in determining the final synthesized hardware.
-
----
