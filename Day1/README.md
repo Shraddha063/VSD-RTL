@@ -148,7 +148,7 @@ The waveform confirms that the output follows the selected input:
 
 Save your GTKWave screenshot as `mux_waveform.png` inside the `Screenshots` folder.
 
-![2:1 MUX simulation waveform](Screenshots/Screenshot%202026-11-03%20192815.png)
+![2:1 MUX simulation waveform]( Screenshots/Screenshot%202026-11-03%20192815.png)
 
 ---
 
@@ -268,9 +268,10 @@ dot -Tsvg Screenshots/good_mux_sky130.dot -o Screenshots/good_mux_sky130.svg
 
 ### Schematic
 
-[View the mapped netlist](VSD-RTL/Day1/Screenshots/Screenshot%202026-11-15%203752.png) 
+[View the mapped netlist](Screenshots/Screenshot%202026-11-15%203752.png) 
 
 ---
+https://github.com/Shraddha063/VSD-RTL/blob/main/Day1/Screenshots/Screenshot%202026-11-15%20203752.png
 
 ## 7. Key Learnings
 
