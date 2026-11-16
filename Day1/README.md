@@ -109,7 +109,7 @@ endmodule
 ```
 
 ---
-
+![2:1 MUX and Testbench Code in gvim](Screenshots/Screenshot%202026-11-03%20194919.png)
 ## 3. Simulation Using Icarus Verilog
 
 ### Step 1: Navigate to the Day-01 directory
@@ -148,7 +148,7 @@ The waveform confirms that the output follows the selected input:
 
 Save your GTKWave screenshot as `mux_waveform.png` inside the `Screenshots` folder.
 
-![2:1 MUX simulation waveform](Screenshots/mux_waveform.png)
+![2:1 MUX simulation waveform](Screenshots/Screenshot%202026-11-03%20192815.png)
 
 ---
 
@@ -231,7 +231,7 @@ The generated mapped netlist is:
 
 `RTL/good_mux_sky130.v`
 
-[View the mapped netlist](RTL/good_mux_sky130.v)
+[View the mapped netlist](RTL/Screenshot%202026-11-15%203752.v)
 
 ### Terminal Output Screenshot
 
