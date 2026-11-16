@@ -268,7 +268,7 @@ dot -Tsvg Screenshots/good_mux_sky130.dot -o Screenshots/good_mux_sky130.svg
 
 ### Schematic
 
-[View the mapped netlist](VSD-RTL/Screenshot%202026-11-15%203752.png) 
+[View the mapped netlist](VSD-RTL/Day1/Screenshots/Screenshot%202026-11-15%203752.png) 
 ---
 
 ## 7. Key Learnings
