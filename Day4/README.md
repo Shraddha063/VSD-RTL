@@ -44,11 +44,11 @@ The testbench changes `i0`, `i1`, and `sel` at different time intervals to verif
 
 ### Simulation and synthesis results
 
-![Ternary MUX RTL simulation](Screenshots/Screenshot 2026-11-19 111449.png)
+![Ternary MUX RTL simulation](Screenshots/Screenshot%202026-11-19%20111449.png)
 
-![Ternary MUX synthesis result](Screenshots/Screenshot 2026-11-19 112325.png)
+![Ternary MUX synthesis result](Screenshots/Screenshot%202026-11-19%20112325.png)
 
-![Ternary MUX gate-level simulation](Screenshots/Screenshot 2026-11-19 220033.png)
+![Ternary MUX gate-level simulation](Screenshots/Screenshot%202026-11-19%20220033.png)
 
 ---
 
@@ -77,11 +77,11 @@ However, synthesis interprets the intended combinational logic and generates a M
 
 ### Simulation and synthesis results
 
-![Bad MUX RTL simulation](Screenshots/Screenshot 2026-11-19 220258.png)
+![Bad MUX RTL simulation](Screenshots/Screenshot%202026-11-19%20220258.png)
 
-![Bad MUX synthesis result](Screenshots/Screenshot 2026-11-19 221100.png)
+![Bad MUX synthesis result](Screenshots/Screenshot%202026-11-19%20221100.png)
 
-![Bad MUX gate-level simulation](Screenshots/Screenshot 2026-11-19 221258.png)
+![Bad MUX gate-level simulation](Screenshots/Screenshot%202026-11-19%20221258.png)
 
 **Observation:** The RTL output does not consistently respond to changes in the data inputs while the select signal remains unchanged. The synthesized MUX behaves as a combinational circuit, demonstrating the RTL-to-GLS mismatch.
 
@@ -168,7 +168,7 @@ end
 
 ### Simulation waveforms
 
-![Blocking assignment waveform – View 1](Screenshots/Screenshot 2026-11-19 223845.png)
+![Blocking assignment waveform – View 1](Screenshots/Screenshot%202026-11-19%20223845.png)
 
 **Observation:** The experiment demonstrates the effect of procedural statement ordering in a combinational block and why the order of blocking assignments matters.
 
