@@ -110,9 +110,9 @@ Therefore, the output responds whenever `i0`, `i1`, or `sel` changes.
 
 ### Simulation results
 
-![Good MUX RTL simulation](Screenshots/Screenshot 2026-11-19 223304.png)
+![Good MUX RTL simulation](Screenshots/Screenshot%202026-11-19%20223304.png)
 
-![Good MUX gate-level simulation](Screenshots/Screenshot 2026-11-19 223605.png)
+![Good MUX gate-level simulation](Screenshots/Screenshot%202026-11-19%20223605.png)
 
 **Observation:** The output follows the selected input correctly. RTL and gate-level simulation demonstrate the expected combinational MUX behaviour.
 
@@ -164,7 +164,7 @@ end
 
 ### RTL source and testbench
 
-![Blocking assignment RTL and testbench](Screenshots/Screenshot 2026-11-20 090502.png)
+![Blocking assignment RTL and testbench](Screenshots/Screenshot%202026-11-20%20090502.png)
 
 ### Simulation waveforms
 
@@ -186,7 +186,7 @@ end
 
 ---
 
-## Repository Structure
+## File Structure
 
 ```text
 Day-04/
@@ -215,5 +215,3 @@ Day-04/
 │
 └── README.md
 ```
-
-**Note:** Keep the `Screenshots/` folder and `README.md` together in the Day 04 directory. The image paths are relative to that directory.
